@@ -25,7 +25,7 @@
                         <div class="row">
                             <div class="col-5">
                                 <div class="form-floating">
-                                    <input type="number" id="hPlaca" class="form-control" placeholder="Largo">
+                                    <input type="number" id="hPlaca" class="form-control" placeholder="Largo" readonly>
                                     <label for="floatingInput">Largo (cm)</label>
                                 </div>
                             </div>
@@ -36,7 +36,7 @@
 
                             <div class="col-5">
                                 <div class="form-floating">
-                                    <input type="number" id="wPlaca" class="form-control" placeholder="Ancho">
+                                    <input type="number" id="wPlaca" class="form-control" placeholder="Ancho" readonly>
                                     <label for="floatingInput">Ancho (cm)</label>
                                 </div>
                             </div>
@@ -142,8 +142,17 @@
                     </div>
                 </div>
 
-                <div class="result col-6 mt-3 m-auto">
-                    <h5 for="username" class="form-label text-danger text-center">PRECIO POR FIGURA</h5>
+
+                <div class="result col-6">
+                    <h5 for="username" class="form-label text-primary text-center">Precio del material</h5>
+                    <div class="input-group has-validation">
+                        <span class="input-group-text"><i class="fas fa-dollar-sign"></i></span>
+                        <input type="number" class="form-control" id="precioMaterial" readonly>
+                    </div>
+                </div>
+
+                <div class="result col-6">
+                    <h5 for="username" class="form-label text-danger text-center">Precio por figura</h5>
                     <div class="input-group has-validation">
                         <span class="input-group-text"><i class="fas fa-dollar-sign"></i></span>
                         <input type="number" class="form-control" id="precioFigura" readonly>
