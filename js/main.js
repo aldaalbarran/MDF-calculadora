@@ -1,3 +1,6 @@
+$("#hPlaca").val(244);
+$('#wPlaca').val(122);
+
 $("#btnCalcular").click(function () {
     if ($("#hPlaca").val() == '' || $("#wPlaca").val() == '') {
         $("#error").removeClass("d-none");
@@ -17,45 +20,37 @@ $("#btnCalcular").click(function () {
 
         var hPlaca = $("#hPlaca").val(); //altura de la placa
         var wPlaca = $("#wPlaca").val(); //ancho de lap placa
-        var aPlaca = area(hPlaca, wPlaca); //area de la placa
+        var aPlaca = hPlaca * wPlaca; //area de la placa
         $("#aPlaca").val(aPlaca); //imprimir área de la placa
 
         var hPieza = $("#hPieza").val(); //altura de la pieza
         var wPieza = $("#wPieza").val(); //ancho de la pieza
-        var aPieza = area(hPieza, wPieza); //area de la pieza
+        var aPieza = hPieza * wPieza; //area de la pieza
         $("#aPieza").val(aPieza); //imprimir área de la pieza
 
-        var pzasPlaca = Math.floor(division(aPlaca, aPieza)); //calcular número de piezas por placa
+        var pzasPlaca = Math.floor(aPlaca / aPieza); //calcular número de piezas por placa
         $("#pzasPlaca").val(pzasPlaca); //imprimir número de piezas por placa
 
         var precioPlaca = $("#precioPlaca").val(); //precio de la placa
-        var precioPieza = division(precioPlaca, pzasPlaca); //precio de la pieza
+        var precioPieza = precioPlaca / pzasPlaca; //precio de la pieza
         $("#precioPieza").val(round(precioPieza, 2)); //imprimir preico de la pieza
 
         var pzasFigura = $("#pzasFigura").val(); //piezas por figura
-        var precioFigura = pzasFigura * precioPieza; //precio por figura
-        $("#precioFigura").val(round(precioFigura, 2)); //imprimir precios por figura
+        var precioMaterial = pzasFigura * precioPieza; //precio del material
+        $("#precioMaterial").val(round(precioMaterial, 2)); //imprimir precio del material
+
+        var precioFigura = precioMaterial * 2; //precio por figura
+        $("#precioFigura").val(round(precioFigura, 2)); //imprimir precio por figura
     }
 });
 
-$( "#btnBorrar" ).click(function() {
+$("#btnBorrar").click(function () {
     $("#hPieza").val("");
     $('#wPieza').val("");
     $('#precioPlaca').val("");
     $('#pzasFigura').val("");
-    
     $("#results").addClass("d-none");
 });
-
-function area(largo, ancho) {
-    var area = largo * ancho;
-    return area;
-}
-
-function division(dividendo, divisor) {
-    var division = dividendo / divisor;
-    return division;
-}
 
 const round = (number, decimalPlaces) => {
     const factorOfTen = Math.pow(10, decimalPlaces);
